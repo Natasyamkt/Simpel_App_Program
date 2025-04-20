@@ -1,3 +1,6 @@
+from simpan_ke_excel import simpan_data
+
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -17,6 +20,8 @@ def index():
 
             # Hitung Engagement Rate
             er = ((likes + comments + shares) / followers) * 100
+            simpan_data(likes, comments, shares, followers, er)
+
 
         except ValueError:
             return "Input tidak valid! Masukkan angka yang benar."
